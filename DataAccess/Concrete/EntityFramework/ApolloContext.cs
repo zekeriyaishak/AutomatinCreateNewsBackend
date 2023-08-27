@@ -10,6 +10,7 @@ namespace DataAccess.Concrete.EntityFramework
 {
     public class ApolloContext: DbContext
     {
+        //Fixed My database Connection because my db is not connect with my backend codes.
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             optionsBuilder.UseSqlServer(@"Server = (localdb)\mssqllocaldb;Database=Apollo;Trusted_Connection=true");
