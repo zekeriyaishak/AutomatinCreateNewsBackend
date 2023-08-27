@@ -51,9 +51,13 @@ var app = builder.Build();
 if (!app.Environment.IsDevelopment())
 {
     app.UseSwagger();
-    app.UseSwaggerUI();
+    app.UseSwaggerUI(c =>
+    {
+        c.SwaggerEndpoint("/swagger/v1/swagger.json","WebAPI v1");
+    });
     
 }
+
 app.UseCors(builder => builder.WithOrigins(" https://localhost:7138").AllowAnyHeader());
 app.UseDeveloperExceptionPage();
 
