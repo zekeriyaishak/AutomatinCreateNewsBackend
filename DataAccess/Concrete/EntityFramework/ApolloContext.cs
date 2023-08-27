@@ -13,7 +13,7 @@ namespace DataAccess.Concrete.EntityFramework
         //Fixed My database Connection because my db is not connect with my backend codes.
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlServer(@"Server = (localdb)\mssqllocaldb;Database=Apollo;Trusted_Connection=true");
+            optionsBuilder.UseSqlServer(@"Data Source=DESKTOP-SDKFJ6F;Initial Catalog=Apollo;Integrated Security=True;Trusted_Connection=true;TrustServerCertificate=True");
         }
 
         public DbSet<User> USERS { get; set; }
