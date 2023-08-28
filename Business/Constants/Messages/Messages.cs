@@ -8,6 +8,7 @@ namespace Business.Constants.Messages
 {
     public static class Messages
     {
+        #region Users Messages
         public static string UserAdded = "Kullanıcı eklenmiştir";
         public static string UserDeleted = "Kullanıcı silinmiştir";
         public static string UserListed = "Kullanıcılar listelenmiştir";
@@ -15,10 +16,20 @@ namespace Business.Constants.Messages
         public static string UserAlreadyExists = "Bu kullanıcı zaten mevcut";
         public static string UserRegistered = "Kullanıcı başarıyla kaydedildi";
         public static string UserNotFound = "Kullanıcı bulunamadı";
+        #endregion
+
+        #region Auth Messages
         public static string AccessTokenCreated = "Access token başarıyla oluşturuldu";
         public static string PasswordError = "Şifre hatalı";
         public static string SuccessLogin = "Sisteme giriş başarılı";
+        #endregion 
 
+        #region News Messages
+        public static string NewsAdded = "Haber eklenmiştir";
+        public static string NewsDeleted = "Haber Silinmiştir";
+        public static string NewsUpdated = "Haber Güncellenmiştir";
+        public static string NewsListed = "Haber listelenmiştir";
+        #endregion 
 
 
     }

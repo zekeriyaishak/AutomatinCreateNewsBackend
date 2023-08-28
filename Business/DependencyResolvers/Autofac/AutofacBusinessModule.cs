@@ -24,6 +24,10 @@ namespace Business.DependencyResolvers.Autofac
             builder.RegisterType<UserManager>().As<IUserService>().SingleInstance();
             builder.RegisterType<EfUserDal>().As<IUserDal>().SingleInstance();
 
+            builder.RegisterType<NewsManager>().As<INewsService>().SingleInstance();
+            builder.RegisterType<EfNewsDal>().As<INewsDal>().SingleInstance();
+
+
             builder.RegisterType<AuthManager>().As<IAuthService>();
 
             builder.RegisterType<JwtHelper>().As<ITokenHelper>();
