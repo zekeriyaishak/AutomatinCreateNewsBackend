@@ -27,6 +27,9 @@ namespace Business.DependencyResolvers.Autofac
             builder.RegisterType<NewsManager>().As<INewsService>().SingleInstance();
             builder.RegisterType<EfNewsDal>().As<INewsDal>().SingleInstance();
 
+            builder.RegisterType<CategoriesManager>().As<ICategoriesService>().SingleInstance();
+            builder.RegisterType<EfCategoriesDal>().As<ICategoriesDal>().SingleInstance();
+
 
             builder.RegisterType<AuthManager>().As<IAuthService>();
 

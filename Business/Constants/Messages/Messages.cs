@@ -29,7 +29,14 @@ namespace Business.Constants.Messages
         public static string NewsDeleted = "Haber Silinmiştir";
         public static string NewsUpdated = "Haber Güncellenmiştir";
         public static string NewsListed = "Haber listelenmiştir";
-        #endregion 
+        #endregion
+
+        #region Categories Messages
+        public static string CategoriesAdded = "Kategori Eklenmiştir";
+        public static string CategoriesDeleted = "Kategori Silinmiştir";
+        public static string CategoriesUpdated = "Kategori Güncellenmiştir";
+        public static string CategoriesListed = "Kategori Listelenmiştir";
+        #endregion
 
 
     }
