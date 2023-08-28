@@ -1,4 +1,5 @@
 ﻿using Core.Entities.Concrete;
+using Core.Extensions;
 using Core.Utilities.Security.Encryption;
 using Core.Utilities.Security.JWT.Abstract;
 using Microsoft.Extensions.Configuration;
@@ -30,7 +31,7 @@ namespace Core.Utilities.Security.JWT.Concrete
             //10 dk sonra 
             _accessTokenExpiration = DateTime.Now.AddMinutes(_tokenOptions.AccessTokenExpiration);
 
-            //Oluştururken securtiykey olması lazım dıyor
+            //Oluştururken securitykey olması lazım dıyor
             var securityKey = SecurityKeyHelper.CreateSecurityKey(_tokenOptions.SecurityKey);
             //hangi alg ve anahtarı kullanayım diyor
             var signingCredentials = SigningCredentialsHelper.CreateSigningCredentials(securityKey);
@@ -47,33 +48,33 @@ namespace Core.Utilities.Security.JWT.Concrete
 
         }
 
-        public JwtSecurityToken CreateJwtSecurityToken(TokenOptions tokenOptions, User user,
-            SigningCredentials signingCredentials, List<OperationClaim> operationClaims)
-        {
-            var jwt = new JwtSecurityToken(
-                issuer: tokenOptions.Issuer,
-                audience: tokenOptions.Audience,
-                expires: _accessTokenExpiration,
-                notBefore: DateTime.Now,
-                claims: SetClaims(user, operationClaims),
-                signingCredentials: signingCredentials
-            );
-            return jwt;
-        }
+            public JwtSecurityToken CreateJwtSecurityToken(TokenOptions tokenOptions, User user,
+                SigningCredentials signingCredentials, List<OperationClaim> operationClaims)
+            {
+                var jwt = new JwtSecurityToken(
+                    issuer: tokenOptions.Issuer,
+                    audience: tokenOptions.Audience,
+                    expires: _accessTokenExpiration,
+                    notBefore: DateTime.Now,
+                    claims: SetClaims(user, operationClaims),
+                    signingCredentials: signingCredentials
+                );
+                return jwt;
+            }
 
-        //Claim-yetki ama başka bilgilerde olabilir.
-        private IEnumerable<Claim> SetClaims(User user, List<OperationClaim> operationClaims)
-        {
+            //Claim-yetki ama başka bilgilerde olabilir.
+            private IEnumerable<Claim> SetClaims(User user, List<OperationClaim> operationClaims)
+            {
 
-            //.net de var olan bir nesneye yeni method ekleyebılıyoruz extensions denıyor
-            var claims = new List<Claim>();
-            //claims.AddNameIdentifier(user.Id.ToString());
-            //claims.AddEmail(user.Email);
-            //claims.AddName($"{user.FirstName} {user.LastName}");
-            //claims.AddRoles(operationClaims.Select(c => c.Name).ToArray());
+                //.net de var olan bir nesneye yeni method ekleyebılıyoruz extensions denıyor
+                var claims = new List<Claim>();
+                claims.AddNameIdentifier(user.Id.ToString());
+                claims.AddEmail(user.Email);
+                claims.AddName($"{user.FirstName} {user.LastName}");
+                claims.AddRoles(operationClaims.Select(c => c.Name).ToArray());
 
-            return claims;
-        }
+                return claims;
+            }
     }
 
 }

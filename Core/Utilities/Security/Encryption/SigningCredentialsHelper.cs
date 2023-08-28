@@ -7,13 +7,11 @@ using System.Threading.Tasks;
 
 namespace Core.Utilities.Security.Encryption
 {   
-    //JWT oluşturalıbılmesi içinn elimizde olanlardan anahtar oluşturyo sısteme girebilmemiz için
-    //email password kulanılıyo ya o usercredentials mesela
     public class SigningCredentialsHelper
-    {//hangi anahtarı ve algoritmayı kullanacagını söyluyoryz asp.net kullanabılmesı ıcın
+    {
         public static SigningCredentials CreateSigningCredentials(SecurityKey securityKey)
         {
-            return new SigningCredentials(securityKey, SecurityAlgorithms.HmacSha512Signature);
+            return new SigningCredentials(securityKey, SecurityAlgorithms.HmacSha256Signature);
         }
     }
 }
